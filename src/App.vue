@@ -54,7 +54,7 @@ function selecionaOperacao() {
         <input @change="evento => estado.primeiroNumero = evento.target.value" type="number" placeholder="Digite o primeiro valor">
       </div>
       <div class="operacao">
-        <select>
+        <select @change="evento => estado.operacao = evento.target.value">
           <option value="select">Selecione uma operação</option>
           <option value="soma">+</option>
           <option value="sub">-</option>
