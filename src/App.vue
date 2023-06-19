@@ -1,5 +1,6 @@
 <script setup>
 import { reactive } from 'vue';
+import Content from './components/Content.vue'
 
 const estado = reactive({
   operacao: 'select',
@@ -48,55 +49,11 @@ function selecionaOperacao() {
 </script>
 
 <template>
-  <main class="container ">
-      <div>
-        <span>{{ estado.primeiroNumero }}</span>
-        <input @change="evento => estado.primeiroNumero = evento.target.value" type="number" placeholder="Digite o primeiro valor">
-      </div>
-      <div class="operacao">
-        <select @change="evento => estado.operacao = evento.target.value">
-          <option value="select">Selecione uma operação</option>
-          <option value="soma">+</option>
-          <option value="sub">-</option>
-          <option value="div">÷</option>
-          <option value="mult">x</option>
-        </select>
-      </div>
-      <div>
-        <span>{{ estado.segundoNumero }}</span>
-        <input @change="evento => estado.segundoNumero = evento.target.value" type="number" placeholder="Digite o segundo valor">
-      </div>
-      <div>
-        <span>
-          Resultado: {{ selecionaOperacao() }}
-        </span>
-      </div>
-  </main>
+  <div class="container ">
+    <Content :seleciona-operacao="selecionaOperacao()" :primeiro-numero="estado.primeiroNumero" :edita-primeiro-numero="event => estado.primeiroNumero = event.target.value" :segundo-numero="estado.segundoNumero" :edita-segundo-numero="event => estado.segundoNumero = event.target.value" :edita-select="event => estado.operacao = event.target.value" />
+  </div>
 </template>
 
 <style scoped>
-  div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: #a3a3a3;
-    height: 30vh
-  }
 
-  input {
-    width: 100%;
-  }
-
-  span {
-    font-size: 80px;
-  }
-
-  .operacao {
-    height: auto;
-  }
-
-  select {
-    width: 100%;
-  }
 </style>
