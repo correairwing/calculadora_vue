@@ -10,9 +10,40 @@ const estado = reactive({
 
 function subtraiInputs() {
   const {primeiroNumero, segundoNumero} = estado;
-  return (primeiroNumero + segundoNumero);
+  return (primeiroNumero - segundoNumero);
 }
 
+function somaInputs() {
+  const {primeiroNumero, segundoNumero} = estado;
+  return parseInt(primeiroNumero) + parseInt(segundoNumero);
+}
+
+function multiplicaInputs() {
+  const {primeiroNumero, segundoNumero} = estado;
+  return (primeiroNumero * segundoNumero);
+}
+
+function divideInputs() {
+  const {primeiroNumero, segundoNumero} = estado;
+  return (primeiroNumero / segundoNumero);
+}
+
+function selecionaOperacao() {
+  const { operacao } = estado;
+
+  switch (operacao) {
+    case 'soma':
+      return somaInputs();
+    case 'sub':
+      return subtraiInputs();
+    case 'div':
+      return divideInputs();
+    case 'mult':
+      return multiplicaInputs();
+    default:
+      return 'Selecione uma operação'
+  }
+}
 
 </script>
 
@@ -37,7 +68,7 @@ function subtraiInputs() {
       </div>
       <div>
         <span>
-          Resultado: {{ subtraiInputs() }}
+          Resultado: {{ selecionaOperacao() }}
         </span>
       </div>
   </main>
